@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
 {% block title %}
-rate now
+    Rate and Review Now
 {% endblock title %}
 
 {% block content %}
     {% if object %}
         <div class="row">
             <div class="col text-center">
-                <img src="{{object.image.url}}" class="rounded" width="100%" alt="image to rate">
-                <a href="{% url 'main-view' %}"><button class="btn btn-primary mt-3">Next</button></a>
+                <img src="{{ object.image.url }}" class="rounded" width="100%" alt="image to rate">
+                <a href="{% url 'main-view' %}">
+                    <button class="btn btn-primary mt-3">Next</button>
+                </a>
             </div>
             <div class="col text-center">
                 <form class="rate-form" action="" method="POST" id="{{object.id}}">
@@ -23,10 +25,26 @@ rate now
                 <br>
                 <div id="confirm-box"></div>
             </div>
+        </div>
+        
+        <div class="review-section mt-4">
+            <h3>Reviews</h3>
+            {% for review in reviews %}
+                <div class="review">
+                    <p><strong>{{ review.user.username }}:</strong> {{ review.review }}</p>
+                </div>
+            {% empty %}
+                <p>No reviews yet.</p>
+            {% endfor %}
             
+            <h4>Add Your Review</h4>
+            <form method="POST" action="{% url 'create-review' image_id=object.id %}">
+                {% csrf_token %}
+                {{ review_form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
         </div>
     {% else %}
         <h1>No images to rate</h1>
     {% endif %}
-    
 {% endblock content %}

@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from ratings.views import main_view, rate_image
+from ratings.views import main_view, rate_image, create_review
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_view, name="main-view"),
     path('rate/', rate_image, name='rate-view'),
+    path('review/<int:image_id>/', create_review, name='create-review'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

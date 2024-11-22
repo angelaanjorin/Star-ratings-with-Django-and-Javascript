@@ -14,3 +14,13 @@ class Rating(models.Model):
     def __str__(self):
         return str(self.pk)
 
+
+class Review(models.Model):
+    image = models.ForeignKey(Rating, on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    review = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Review by {self.user} on {self.created_at}"
+
