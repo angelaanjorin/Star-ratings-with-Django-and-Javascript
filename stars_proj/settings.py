@@ -25,7 +25,14 @@ SECRET_KEY = 'afe^0z#39aswg5&y&z3^-4(k85x4qh!*ocp8l)qn3aniejy3o3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost',
+    '.gitpod.io',
+    '127.0.0.1',]
+
+CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
+# Application definition
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Application definition
