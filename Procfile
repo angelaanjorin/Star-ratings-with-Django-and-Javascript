@@ -1,0 +1,1 @@
+web: gunicorn stars_proj.wsgi

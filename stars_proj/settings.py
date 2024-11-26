@@ -23,11 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'afe^0z#39aswg5&y&z3^-4(k85x4qh!*ocp8l)qn3aniejy3o3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost',
     '.gitpod.io',
-    '127.0.0.1',]
+    '127.0.0.1',
+    '.herokuapp.com',
+]
 
 CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
 # Application definition
